@@ -13,4 +13,4 @@ releases:
     values:
       - image:
           name: ubuntu
-          tag: "22.04"
+          tag: "25.10"
