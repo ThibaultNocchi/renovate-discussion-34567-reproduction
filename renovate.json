@@ -14,7 +14,7 @@
       "managerFilePatterns": ["/^myfile.yml$/"],
       "fileFormat": "yaml",
       "matchStrings": [
-        "$each($, function($v, $k){{\"depName\": $k,\"packageName\": $v.image,\"currentValue\": $split($v.tag, \"@\")[0],\"currentDigest\": $split($v.tag, \"@\")[1]}})"
+        "$each(function($v, $k){{\"depName\": $k,\"packageName\": $v.image,\"currentValue\": $split($v.tag, \"@\")[0],\"currentDigest\": $split($v.tag, \"@\")[1]}})"
       ],
       "datasourceTemplate": "docker"
     }
