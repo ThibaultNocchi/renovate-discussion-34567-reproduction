@@ -1,31 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "prConcurrentLimit": 0,
-  "prHourlyLimit": 0,
-  "dependencyDashboard": true,
-  "extends": [
-    "group:recommended",
-    "preview:dockerCompose",
-    "preview:dockerVersions"
-  ],
-  "helmfile": {
-    "managerFilePatterns": ["/(^|/)(.*\\.)?helmfile\\.ya?ml(?:\\.gotmpl)?$/"]
-  },
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/(^|/)(.*\\.)?helmfile\\.ya?ml(?:\\.gotmpl)?$/"],
+      "managerFilePatterns": ["/^myfile.yml$/"],
       "matchStrings": [
-        "\\n  - name: \"?(?<depName>[^\"\\s]+)\"?\\n(?:[^-]|\\n)*?chart: .*single-app\"?\\n(?:.|\\n)*?- image:\\n(?:.|\\n)*?name: \"?(?<packageName>[^\"\\s]+)\"?\\n(?:.|\\n)*?tag: \"?(?<currentValue>[^@\"\\s]+)(?:@(?<currentDigest>sha256:[^@\"\\s]+))?\"?"
+        "(?<depName>[^:]+):\\n  image: (?<packageName>[^\\n]+)\\n  tag: \"(?<currentValue>[^@\"]+)(?:@(?<currentDigest>sha256:[^@\"]+))?\""
       ],
       "datasourceTemplate": "docker"
     },
     {
       "customType": "jsonata",
-      "managerFilePatterns": ["/(^|/)(.*\\.)?helmfile\\.ya?ml(?:\\.gotmpl)?$/"],
+      "managerFilePatterns": ["/^myfile.yml$/"],
       "fileFormat": "yaml",
       "matchStrings": [
-        "$map($filter(releases, function($v){$contains($v.chart, \"charts/single-app\")}), function($v){{\n    \"depName\": $v.name & \"-jsonata\",\n    \"packageName\": $v.values.image.name,\n    \"currentValue\": $split($v.values.image.tag, \"@\")[0],\n    \"currentDigest\": $split($v.values.image.tag, \"@\")[1]\n}})"
+        "$each($, function($v, $k){{\"depName\": $k,\"packageName\": $v.image,\"currentValue\": $split($v.tag, \"@\")[0],\"currentDigest\": $split($v.tag, \"@\")[1]}})"
       ],
       "datasourceTemplate": "docker"
     }
