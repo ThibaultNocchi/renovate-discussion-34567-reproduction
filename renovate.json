@@ -17,7 +17,7 @@
       "managerFilePatterns": ["/^myfile.yml$/"],
       "fileFormat": "yaml",
       "matchStrings": [
-        "$each(releases,function($v, $k){{\"depName\": $k,\"packageName\": $v.image,\"currentValue\": $split($v.tag, \"@\")[0],\"currentDigest\": $split($v.tag, \"@\")[1]}})"
+        "$each(releases,function($v, $k){{\"depName\": $k&\"-jsonata\",\"packageName\": $v.image,\"currentValue\": $split($v.tag, \"@\")[0],\"currentDigest\": $split($v.tag, \"@\")[1]}})"
       ],
       "datasourceTemplate": "docker"
     }
