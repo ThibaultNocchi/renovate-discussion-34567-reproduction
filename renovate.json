@@ -6,7 +6,7 @@
       "customType": "regex",
       "managerFilePatterns": ["/^myfile.yml$/"],
       "matchStrings": [
-        "(?<depName>[^:]+):\\n    image: (?<packageName>[^\\n]+)\\n    tag: \"(?<currentValue>[^@\"]+)(?:@(?<currentDigest>sha256:[^@\"]+))?\""
+        "\\n  (?<depName>[^:]+):\\n    image: (?<packageName>[^\\n]+)\\n    tag: \"(?<currentValue>[^@\"]+)(?:@(?<currentDigest>sha256:[^@\"]+))?\""
       ],
       "datasourceTemplate": "docker"
     },
