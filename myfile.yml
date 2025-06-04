@@ -1,6 +1,7 @@
-renovate:
-  image: renovate/renovate
-  tag: "40.40.3"
-renovate-sha:
-  image: renovate/renovate
-  tag: "latest@sha256:30209977597b0705b064fa90caae31aae6c2c72f561264ffcd8f8f2d91fff084"
+releases:
+  renovate:
+    image: renovate/renovate
+    tag: "40.40.3"
+  renovate-sha:
+    image: renovate/renovate
+    tag: "latest@sha256:30209977597b0705b064fa90caae31aae6c2c72f561264ffcd8f8f2d91fff084"
