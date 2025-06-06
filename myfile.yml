@@ -4,4 +4,4 @@ releases:
     tag: "40.40.3"
   renovate-sha:
     image: renovate/renovate
-    tag: "latest@sha256:30209977597b0705b064fa90caae31aae6c2c72f561264ffcd8f8f2d91fff084"
+    tag: "latest@sha256:bb28a7ea4c870acb6671484f6c97f708a8618bdb6f415e80a3131bb054e7179b"
